@@ -41,18 +41,18 @@ RUN \
   &&  sudo apt-get install -y gettext \
   &&  sudo apt-get install -y libsecret-1-dev
 
-#ENV \
-#  ELECTRON_CACHE=$HOME/.cache/electron \
-#  ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
-#
-#ARG repo_url=https://github.com/phlummox-mirrors/joplin.git
-#
-#RUN \
-#  git clone --depth 10 $repo_url
-#
-#
-#WORKDIR joplin
-#
+ENV \
+  ELECTRON_CACHE=$HOME/.cache/electron \
+  ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+
+ARG repo_url=https://github.com/phlummox-mirrors/joplin.git
+
+RUN \
+  git clone --depth 10 $repo_url
+
+
+WORKDIR joplin
+
 ## git checkout -b building v1.4.18
 #
 #RUN \
