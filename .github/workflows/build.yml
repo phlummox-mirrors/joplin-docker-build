@@ -1,0 +1,60 @@
+# vim: hlsearch ts=2 sw=2 et :
+
+name: build-and-test
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  build-and-test:
+    # Name the Job
+    name: build and test
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: apt packages
+        run: |
+
+          msg="[+] STARTING"
+          printf "%s\n" "${msg}"
+          printf "%s\n" "${msg}" >&2
+
+
+          apt-get clean && \
+          apt-get update && \
+          apt-get install -y --no-install-recommends \
+            curl        \
+            make        \
+            sudo
+
+          add-apt-repository ppa:git-core/ppa
+          apt-get update
+          apt-get install -y --no-install-recommends git
+
+          msg="[+] INSTALLED APT PACKAGES"
+          printf "%s\n" "${msg}"
+          printf "%s\n" "${msg}" >&2
+
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: build and test
+        run: |
+          set -ex
+
+          msg="[+] STARTING"
+          printf "%s\n" "${msg}"
+          printf "%s\n" "${msg}" >&2
+
+          make build
+
+          msg="[+] DONE INSTALL"
+          printf "%s\n" "${msg}"
+          printf "%s\n" "${msg}" >&2
+
+
