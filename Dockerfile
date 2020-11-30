@@ -54,11 +54,11 @@ RUN \
 WORKDIR joplin
 
 ## git checkout -b building v1.4.18
-#
-#RUN \
-#      npm install \
-#  &&  cd packages/app-desktop \
-#  &&  USE_HARD_LINKS=false npm run dist
+
+RUN \
+      npm install \
+  &&  cd packages/app-desktop \
+  &&  USE_HARD_LINKS=false npm run dist
 
 
 
