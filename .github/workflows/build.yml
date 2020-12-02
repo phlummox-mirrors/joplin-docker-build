@@ -43,7 +43,8 @@ jobs:
           printf "%s\n" "${msg}" >&2
 
           curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-            && apt install nodejs
+            && apt install -y --no-install-recommends \
+                  nodejs
 
           curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
             &&  echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
