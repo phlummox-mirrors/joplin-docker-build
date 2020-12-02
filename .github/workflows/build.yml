@@ -66,6 +66,19 @@ jobs:
           git clone --depth 10 $repo_url
           cd ./joplin
 
+          msg="[+] INFO"
+          printf "%s\n" "${msg}"
+          printf "%s\n" "${msg}" >&2
+
+          node --version
+          npm --version
+          yarn --version
+          set
+          echo $PATH
+          pwd
+          ls -al
+
+
           msg="[+] STARTING"
           printf "%s\n" "${msg}"
           printf "%s\n" "${msg}" >&2
@@ -74,8 +87,13 @@ jobs:
           export ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
           npm install
-          cd packages/app-desktop \
-            && USE_HARD_LINKS=false npm run dist || true
+
+          msg="[+] DONE NPM INSTALL"
+          printf "%s\n" "${msg}"
+          printf "%s\n" "${msg}" >&2
+
+          cd packages/app-desktop
+          USE_HARD_LINKS=false npm run dist || true
 
           msg="[+] DONE BUILD"
           printf "%s\n" "${msg}"
