@@ -86,6 +86,7 @@ jobs:
           export ELECTRON_CACHE=$HOME/.cache/electron
           export ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
+          npm set unsafe-perm true
           npm install
 
           msg="[+] DONE NPM INSTALL"
