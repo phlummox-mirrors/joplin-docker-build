@@ -54,12 +54,17 @@ jobs:
             &&  apt-get install -y gettext \
             &&  apt-get install -y libsecret-1-dev
 
-      - name: Checkout code
-        uses: actions/checkout@v2
+      #- name: Checkout code
+      #  uses: actions/checkout@v2
 
       - name: build and test
         run: |
           set -ex
+
+
+          repo_url=https://github.com/phlummox-mirrors/joplin.git
+          git clone --depth 10 $repo_url
+          cd ./joplin
 
           msg="[+] STARTING"
           printf "%s\n" "${msg}"
