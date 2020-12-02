@@ -31,6 +31,7 @@ jobs:
             clang       \
             curl        \
             make        \
+            rsync       \
             software-properties-common \
             sudo
 
