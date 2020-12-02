@@ -57,18 +57,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      #- name: build and test
-      #  run: |
-      #    set -ex
+      - name: build and test
+        run: |
+          set -ex
 
-      #    msg="[+] STARTING"
-      #    printf "%s\n" "${msg}"
-      #    printf "%s\n" "${msg}" >&2
+          msg="[+] STARTING"
+          printf "%s\n" "${msg}"
+          printf "%s\n" "${msg}" >&2
 
-      #    make build
+          export ELECTRON_CACHE=$HOME/.cache/electron
+          export ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
-      #    msg="[+] DONE INSTALL"
-      #    printf "%s\n" "${msg}"
-      #    printf "%s\n" "${msg}" >&2
+          npm install
+          cd packages/app-desktop \
+            && USE_HARD_LINKS=false npm run dist || true
+
+          msg="[+] DONE BUILD"
+          printf "%s\n" "${msg}"
+          printf "%s\n" "${msg}" >&2
 
 
