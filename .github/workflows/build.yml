@@ -31,6 +31,7 @@ jobs:
             clang       \
             curl        \
             make        \
+            software-properties-common \
             sudo
 
           add-apt-repository ppa:git-core/ppa
